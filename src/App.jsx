@@ -1,8 +1,14 @@
+import Footer from './layout/Footer';
+import Header from './layout/Header';
+import MainPage from './pages/MainPage';
+
 function App() {
   return (
-    <>
-      <h1>React App</h1>
-    </>
+    <div>
+      <Header />
+      <MainPage />
+      <Footer />
+    </div>
   );
 }
 

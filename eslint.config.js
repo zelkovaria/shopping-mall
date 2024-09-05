@@ -37,6 +37,7 @@ export default [
       'react/jsx-props-no-spreading': 'off',
       'react/react-in-jsx-scope': 'off',
       'react/jsx-no-target-blank': 'off',
+      'react/self-closing-comp': 'error',
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },
