@@ -9,12 +9,18 @@ import 'swiper/css/pagination';
 import { Navigation, Pagination } from 'swiper/modules';
 
 const BannerList = () => {
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
   return (
     <section className={StylePropertyMap.BannerList}>
       <h2 aria-hidden>배너리스트</h2>
       <Swiper
         slidesPerView={1}
-        navigation={true}
+        navigation={{ prevEl: prevRef.current, nextEl: nextRef.current }}
+        onBeforeInit={(swiper) => {
+          swiper.params.navigation.prevEl = prevRef.current;
+          swiper.params.navigation.nextEl = nextRef.current;
+        }}
         spaceBetween={30}
         pagination={{
           clickable: true,
@@ -41,8 +47,12 @@ const BannerList = () => {
           </div>
         </SwiperSlide>
       </Swiper>
-      <button className="btnPrev">이전</button>
-      <button className="btnNext">다음</button>
+      <button ref={prevRef} className={style.btnPrev}>
+        이전
+      </button>
+      <button ref={nextRef} className={style.btnNext}>
+        다음
+      </button>
     </section>
   );
 };
