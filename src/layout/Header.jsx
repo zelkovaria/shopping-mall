@@ -1,18 +1,20 @@
+import style from '../css/Header.module.css';
+
 const Header = () => {
   return (
-    <header>
+    <header className={`${style.Header} mw`}>
       <h1>
         <a href="/">
-          <img src="/img/logo.svg" alt="로고" />
+          <img className={style.logoImg} src="/img/logo.svg" alt="로고" />
         </a>
       </h1>
       <nav>
-        <div>
+        <div className={style.gnb}>
           <a href="#">SHOP</a>
           <a href="#">BLOG</a>
           <a href="#">OUT STORY</a>
         </div>
-        <div>
+        <div className={style.person}>
           <a href="#">
             <i className="fa-solid fa-magnifying-glass" />
           </a>
@@ -24,7 +26,7 @@ const Header = () => {
           </a>
         </div>
       </nav>
-      <button>
+      <button className={style.btn}>
         <i className="fa-solid fa-bars" />
       </button>
     </header>
