@@ -3,6 +3,9 @@ import Footer from './layout/Footer';
 import Header from './layout/Header';
 import MainPage from './pages/MainPage';
 import { Route, Routes } from 'react-router-dom';
+import ShopPage from './pages/ShopPage';
+import BlogPage from './pages/BlogPage';
+import OurPage from './pages/OurPage';
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -30,9 +33,13 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<MainPage products={products} />} />
-        <Route path="/shop" element="상품리스트" />
-        <Route path="/blog" element="블로그" />
-        <Route path="/our" element="회사소개" />
+        <Route path="/shop" element={<ShopPage />} />
+        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/our" element={<OurPage />}>
+          <Route path="ceo" element={'ceo'} />
+          <Route path="history" element={'history'} />
+          <Route path="org" element={'org'} />
+        </Route>
         <Route path="/search" element="검색페이지" />
         <Route path="/cart" element="장바구니" />
         <Route path="/mypage" element="마이페이지" />
