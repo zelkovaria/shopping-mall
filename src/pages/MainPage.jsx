@@ -1,8 +1,13 @@
+import BannerList from '../layout/BannerList';
+import ProductList from '../layout/ProductList';
+
 const MainPage = () => {
   return (
-    <div>
+    <main className="mw">
       <h2>메인</h2>
-    </div>
+      <BannerList />
+      <ProductList />
+    </main>
   );
 };
 
