@@ -1,0 +1,19 @@
+.ProductList {
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.ProductList h2,
+.ProductList a {
+  padding: 1rem;
+}
+.listCon {
+  margin: 0 !important;
+}
+.listCon {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
