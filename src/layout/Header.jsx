@@ -1,29 +1,30 @@
+import { Link } from 'react-router-dom';
 import style from '../css/Header.module.css';
 
 const Header = () => {
   return (
     <header className={`${style.Header} mw`}>
       <h1>
-        <a href="/">
+        <Link to="/">
           <img className={style.logoImg} src="/img/logo.svg" alt="로고" />
-        </a>
+        </Link>
       </h1>
       <nav>
         <div className={style.gnb}>
-          <a href="#">SHOP</a>
-          <a href="#">BLOG</a>
-          <a href="#">OUT STORY</a>
+          <Link to="/shop">SHOP</Link>
+          <Link to="/blog">BLOG</Link>
+          <Link to="/our">OUT STORY</Link>
         </div>
         <div className={style.person}>
-          <a href="#">
+          <Link to="/search">
             <i className="fa-solid fa-magnifying-glass" />
-          </a>
-          <a href="#">
+          </Link>
+          <Link to="/cart">
             <i className="fa-solid fa-cart-shopping" />
-          </a>
-          <a href="#">
+          </Link>
+          <Link to="/mypage">
             <i className="fa-solid fa-user" />
-          </a>
+          </Link>
         </div>
       </nav>
       <button className={style.btn}>
