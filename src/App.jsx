@@ -33,7 +33,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<MainPage products={products} />} />
-        <Route path="/shop" element={<ShopPage />} />
+        <Route path="/shop" element={<ShopPage products={products} />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/our" element={<OurPage />}>
           <Route path="ceo" element={'ceo'} />
@@ -43,6 +43,20 @@ function App() {
         <Route path="/search" element="검색페이지" />
         <Route path="/cart" element="장바구니" />
         <Route path="/mypage" element="마이페이지" />
+        <Route
+          path="*"
+          element={
+            <section
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              내용 없음
+            </section>
+          }
+        />
       </Routes>
 
       <Footer />

@@ -33,7 +33,7 @@
   display: none;
 }
 
-.on {
+nav.on {
   display: block !important;
 }
 
