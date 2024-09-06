@@ -1,16 +1,60 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import ListCard from '../components/ListCard';
 import style from '../css/ShopPage.module.css';
+import { useSearchParams } from 'react-router-dom';
 
-const ShopPage = ({ products }) => {
+const SORT_OPTIONS = {
+  latest: '',
+  lowPrice: 'price',
+  highPrice: '-price',
+  discount: '-discount',
+};
+const SORT_LABELS = {
+  latest: '최신순',
+  lowPrice: '낮은가격순',
+  highPrice: '높은가격순',
+  discount: '높은할인율',
+};
+
+const ShopPage = ({ products, getProducts }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [currentPage, setCurrentPage] = useState(() => {
+    parseInt(searchParams.get('page') || '1', 10);
+  });
+  const [sortType, setSortType] = useState(
+    () => searchParams.get('sort') || 'id'
+  );
+
+  console.log(searchParams.get('page'));
+
+  const loadProducts = useCallback(() => {
+    getProducts(1, currentPage * 8, SORT_OPTIONS[sortType]);
+    // setSearchParams({ page: currentPage.toString(), sort: sortType });
+  }, []);
+
+  const handleSort = (key) => {
+    setSortType(key);
+    setCurrentPage(1);
+  };
+
+  useEffect(() => {
+    loadProducts();
+  }, [loadProducts]);
+
   return (
     <main className={`${style.ShopPage} mw`}>
       <h2>shop page</h2>
       <nav>
-        <button>등록순</button>
-        <button>낮은 가격순</button>
-        <button>높은 가격순</button>
-        <button>높은 할인률순</button>
+        {Object.keys(SORT_OPTIONS).map((key) => (
+          <button
+            key={key}
+            onClick={() => {
+              handleSort(key);
+            }}
+          >
+            {SORT_LABELS[key]}
+          </button>
+        ))}
       </nav>
       <ul className={style.listCon}>
         {products.map((item) => (

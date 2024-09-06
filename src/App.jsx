@@ -10,14 +10,13 @@ import OurPage from './pages/OurPage';
 function App() {
   const [products, setProducts] = useState([]);
 
-  const getProducts = async () => {
+  const getProducts = async (page = 1, perPage = 6, sort = '') => {
+    const BASE_URL = 'http://localhost:8000/products';
     try {
-      // let url = `http://localhost:8000/products`;
-      let url = `http://localhost:8000/products?_page=1&_per_page=6&category=new`;
+      let url = `${BASE_URL}?_page=${page}&_per_page=${perPage}&_sort=${sort}`;
       let res = await fetch(url);
       let data = await res.json();
 
-      // setProducts(data);
       setProducts(data.data);
     } catch (e) {
       console.error(e);
@@ -33,7 +32,10 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<MainPage products={products} />} />
-        <Route path="/shop" element={<ShopPage products={products} />} />
+        <Route
+          path="/shop"
+          element={<ShopPage products={products} getProducts={getProducts} />}
+        />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/our" element={<OurPage />}>
           <Route path="ceo" element={'ceo'} />
