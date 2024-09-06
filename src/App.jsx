@@ -7,6 +7,7 @@ import ShopPage from './pages/ShopPage';
 import BlogPage from './pages/BlogPage';
 import OurPage from './pages/OurPage';
 import DetailPage from './pages/DetailPage';
+import CartPage from './pages/CartPage';
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -50,7 +51,7 @@ function App() {
           <Route path="org" element={'org'} />
         </Route>
         <Route path="/search" element="검색페이지" />
-        <Route path="/cart" element="장바구니" />
+        <Route path="/cart" element={<CartPage />} />
         <Route path="/mypage" element="마이페이지" />
         <Route path="/detail/:id" element={<DetailPage />} />
         <Route
