@@ -1,25 +1,22 @@
 .Header {
+  box-shadow: 5px 10px 10px rgb(226, 225, 225);
   position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 0;
 }
-
 .logoImg {
   width: 200px;
 }
-
 .Header > nav,
 .gnb,
 .person {
   display: flex;
   gap: 1rem;
 }
-
 .Header a {
   transition: 0.3s;
-  font-weight: bold;
   color: #333;
 }
 .Header a:hover {
@@ -32,13 +29,8 @@
   top: 2rem;
   display: none;
 }
-
 nav.on {
   display: block !important;
-}
-
-body {
-  background-color: #eaeaea;
 }
 
 @media (max-width: 800px) {
@@ -50,11 +42,10 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
+    background-color: white;
     text-align: center;
     padding: 50px 0;
-    background-color: white;
   }
-
   .Header > nav > div {
     justify-content: center;
     padding: 2rem;

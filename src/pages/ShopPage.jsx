@@ -19,18 +19,17 @@ const SORT_LABELS = {
 const ShopPage = ({ products, getProducts }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [currentPage, setCurrentPage] = useState(() => {
-    parseInt(searchParams.get('page') || '1', 10);
+    return parseInt(searchParams.get('page') || '1', 10);
   });
   const [sortType, setSortType] = useState(
     () => searchParams.get('sort') || 'id'
   );
 
-  console.log(searchParams.get('page'));
-
   const loadProducts = useCallback(() => {
     getProducts(1, currentPage * 8, SORT_OPTIONS[sortType]);
-    // setSearchParams({ page: currentPage.toString(), sort: sortType });
-  }, []);
+    setSearchParams({ page: currentPage.toString(), sort: sortType });
+  }, [currentPage, setSearchParams, sortType]);
+  // }, []);
 
   const handleSort = (key) => {
     setSortType(key);
@@ -51,6 +50,7 @@ const ShopPage = ({ products, getProducts }) => {
             onClick={() => {
               handleSort(key);
             }}
+            className={sortType === key ? style.active : ''}
           >
             {SORT_LABELS[key]}
           </button>

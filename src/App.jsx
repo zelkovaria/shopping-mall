@@ -2,13 +2,15 @@ import { useEffect, useState } from 'react';
 import Footer from './layout/Footer';
 import Header from './layout/Header';
 import MainPage from './pages/MainPage';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import ShopPage from './pages/ShopPage';
 import BlogPage from './pages/BlogPage';
 import OurPage from './pages/OurPage';
+import DetailPage from './pages/DetailPage';
 
 function App() {
   const [products, setProducts] = useState([]);
+  const location = useLocation();
 
   const getProducts = async (page = 1, perPage = 6, sort = '') => {
     const BASE_URL = 'http://localhost:8000/products';
@@ -24,11 +26,16 @@ function App() {
   };
 
   useEffect(() => {
+    if (location.pathname === '/shop') {
+      getProducts(1, 8);
+    } else if (location.pathname === '/') {
+      getProducts(1, 6);
+    }
     getProducts();
-  }, []);
+  }, [location.pathname]);
 
   return (
-    <div>
+    <div className="wrap">
       <Header />
       <Routes>
         <Route path="/" element={<MainPage products={products} />} />
@@ -45,6 +52,7 @@ function App() {
         <Route path="/search" element="검색페이지" />
         <Route path="/cart" element="장바구니" />
         <Route path="/mypage" element="마이페이지" />
+        <Route path="/detail/:id" element={<DetailPage />} />
         <Route
           path="*"
           element={

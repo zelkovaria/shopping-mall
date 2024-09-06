@@ -1,48 +1,43 @@
 .BannerList {
-}
-
-.bannerList {
+	position: relative;
 }
 
 .list {
-  position: relative;
-  padding-top: 50%;
+	position: relative;
+	padding-top: 50%;
 }
 .list p {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: 100px;
-  font-size: 2rem;
-  z-index: 1;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	left: 100px;
+	font-size: 2rem;
+	z-index: 1;
 }
 .list img {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 }
 
-/* 공통 속성 */
 .btnPrev,
 .btnNext {
-  position: absolute;
-  top: 50%;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: goldenrod;
-  z-index: 5;
-  cursor: pointer;
-  outline: none;
-  border: none;
+	position: absolute;
+	top: 50%;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	background-color: goldenrod;
+	z-index: 5;
+	cursor: pointer;
+	outline: none;
+	border: none;
 }
-
-/* 개별 속성 */
 .btnPrev {
-  left: -20px;
+	left: -25px;
 }
 .btnNext {
-  right: -20px;
+	right: -25px;
 }
