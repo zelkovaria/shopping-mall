@@ -22,7 +22,7 @@ const ShopPage = ({ products, getProducts }) => {
     return parseInt(searchParams.get('page') || '1', 10);
   });
   const [sortType, setSortType] = useState(
-    () => searchParams.get('sort') || 'id'
+    () => searchParams.get('sort') || 'latest'
   );
 
   const loadProducts = useCallback(() => {
