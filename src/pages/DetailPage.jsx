@@ -6,8 +6,8 @@ import Similar from '../layout/Similar';
 
 const DetailPage = () => {
   const { id } = useParams();
-  console.log(id);
   const [products, setProducts] = useState(null);
+  const [count, setCount] = useState(1);
 
   const getproductsDetail = async () => {
     try {
@@ -21,10 +21,19 @@ const DetailPage = () => {
     }
   };
 
+  const increment = () => {
+    count < 10 ? setCount((prev) => prev + 1) : alert('최대 수량은 10개입니다');
+  };
+  const decrement = () => {
+    count >= 1 ? setCount((prev) => prev - 1) : alert('최소 수량은 1개입니다');
+  };
+
   useEffect(() => {
     getproductsDetail();
   }, [id]);
-  console.log(products);
+  /**
+   * @Todo products null로 초반에 뜨는거 디버깅으로 순서 확인
+   */
 
   return (
     <div className={`${style.DetailPage} mw`}>
@@ -40,9 +49,17 @@ const DetailPage = () => {
           <p>가격 정보: {Number(products?.price).toLocaleString()}원</p>
           <p>할인률: {products?.discount}</p>
           <div className={style.count}>
-            <button>-</button>
-            <span>1</span>
-            <button>+</button>
+            {count === 1 ? (
+              <button disabled>-</button>
+            ) : (
+              <button onClick={decrement}>-</button>
+            )}
+            <span>{count}</span>
+            {count === 10 ? (
+              <button disabled>+</button>
+            ) : (
+              <button onClick={increment}>+</button>
+            )}
           </div>
         </div>
       </div>
