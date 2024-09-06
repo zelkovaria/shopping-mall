@@ -29,7 +29,10 @@ const ShopPage = ({ products, getProducts }) => {
     getProducts(1, currentPage * 8, SORT_OPTIONS[sortType]);
     setSearchParams({ page: currentPage.toString(), sort: sortType });
   }, [currentPage, setSearchParams, sortType]);
-  // }, []);
+
+  const loadMore = () => {
+    setCurrentPage((prev) => prev + 1);
+  };
 
   const handleSort = (key) => {
     setSortType(key);
@@ -61,6 +64,7 @@ const ShopPage = ({ products, getProducts }) => {
           <ListCard key={item.id} item={item} />
         ))}
       </ul>
+      <button onClick={loadMore}>상품 더 불러오기</button>
     </main>
   );
 };
